@@ -11,9 +11,6 @@ import UIKit
 // MARK: - EmployeeData Cell
 
 class EmployeeDataCell: UITableViewCell {
-
-    // MARK: - Class Constants
-    static let identifier = "EmployeeDataCell"
   
     // MARK: - Outlets
 

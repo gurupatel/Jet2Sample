@@ -8,17 +8,67 @@
 
 import UIKit
 
-class EmployeeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class EmployeeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, EmployeeDataModelClassDelegate {
+
+    var indicator: UIActivityIndicatorView!
 
     @IBOutlet var tblListView: UITableView!
 
-    var listArray: NSMutableArray? = []
+    var employeeDataEntity : [EmployeeData]? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      
+        self.addIndicator()
+        
+        self.getEmployeeDataFromServer()
+    }
+    
+    // MARK: - getEmployeeDataFromServer Method
+
+    func getEmployeeDataFromServer() {
+        
+        let webServices = WebServices()
+        webServices.delegate = self
+        webServices.getEmployeeData()
+    }
+    
+    // MARK: - EmployeeData Delegates Methods
+
+    func didGetEmployeeDataSuccessfully(_ responseDict: NSDictionary?) {
+        
+        self.removeIndicator()
+        
+        if (responseDict!["status"] as? String ?? "" == "success") {
+            
+            //Success
+            
+            let data = responseDict!["data"] as? NSArray
+            
+            if (data != nil && (data?.count)! > 0) {
+                
+                employeeDataEntity = Constants.parseEmployeeData(dataArray: responseDict!["data"] as? Array)
+
+                self.tblListView.reloadData()
+            }
+        }
+        else {
+            
+            //Error
+        }
+    }
+    
+    func didGetEmployeeDataFailed(_ error: Error?) {
+        
+        self.removeIndicator()
+    }
+
     // MARK: - tableCategory Delegates and Datasources
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -30,34 +80,35 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
         
         var value = 0
         
-        if (listArray != nil && listArray!.count > 0) {
+        if (employeeDataEntity != nil && employeeDataEntity!.count > 0) {
             
-            value = listArray!.count
+            value = employeeDataEntity!.count
         }
         return value
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cellIdentifier = "cell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EmployeeDataCell", for: indexPath) as! EmployeeDataCell
 
-        let cell: UITableViewCell? = self.tblListView.dequeueReusableCell(withIdentifier: cellIdentifier)
-        cell?.selectionStyle = .default
+        cell.selectionStyle = .default
 
-        self.tblListView.separatorStyle = .none
-
-        if (listArray != nil && listArray!.count > 0)  {
+        if (employeeDataEntity != nil && employeeDataEntity!.count > 0)  {
             
+            let empData = employeeDataEntity![indexPath.row]
+            
+            cell.lblEmpName.text = "Name : " + empData.empName!
+            cell.lblEmpAge.text = "Age : " + empData.empAge!
         }
         
-        return cell!
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if (listArray != nil && listArray!.count > 0) {
+        if (employeeDataEntity != nil && employeeDataEntity!.count > 0) {
             
         }
     }
@@ -68,10 +119,25 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
         return value
     }
     
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//
-//        let rowHeight = UITableView.automaticDimension
-//        return rowHeight
-//    }
+    // MARK: - addIndicator
+    func addIndicator() {
+    
+        /* Adding UIActivityIndicatorView to view */
+        indicator = CommonUI.createUIActivityIndicatorView()
+        indicator.center = self.view.center
+
+        self.view.addSubview(indicator)
+        self.view.bringSubviewToFront(indicator)
+        
+        indicator.startAnimating()
+    }
+    
+    // MARK: - removeIndicator
+    func removeIndicator() {
+
+        indicator.stopAnimating()
+        
+        indicator.removeFromSuperview()
+    }
 }
 

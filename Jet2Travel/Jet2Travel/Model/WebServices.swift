@@ -27,12 +27,12 @@ class WebServices : NSObject {
         let URL: String = Constants.getEmployeeDataAPI
                 
         Network.sharedInstance.request(URL, method: "GET", params: nil, delegate: self.delegate, success: { (json) in
-
-            //print(json)
             
             let jsonObject = try? (JSONSerialization.jsonObject(with: json.rawData(), options: []) as! NSDictionary)
 
             let serverResponseDict = jsonObject as NSDictionary?
+
+            print("getEmployeeData : ", serverResponseDict!)
 
             if (serverResponseDict != nil) {
                 

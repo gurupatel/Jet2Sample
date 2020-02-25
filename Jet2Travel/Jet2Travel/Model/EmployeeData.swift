@@ -14,17 +14,9 @@ class EmployeeData: NSObject {
   
     // MARK: - Variables And Properties
     
-    var empName: String
-    var empSalary: String
-    var empAge: String
-    var empImg: String
-  
-    // MARK: - Initialization
-
-    init(empName: String, empSalary: String, empAge: String, empImg: String) {
-    self.empName = empName
-    self.empSalary = empSalary
-    self.empAge = empAge
-    self.empImg = empImg
-  }
+    var empName: String? = nil
+    var empSalary: String? = nil
+    var empAge: String? = nil
+    var empImg: String? = nil
+    var empID: String? = nil
 }
