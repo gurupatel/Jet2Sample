@@ -15,6 +15,7 @@
 		425FB94B2405781D00C58F43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425FB9492405781D00C58F43 /* LaunchScreen.storyboard */; };
 		425FB9562405781D00C58F43 /* Jet2TravelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FB9552405781D00C58F43 /* Jet2TravelTests.swift */; };
 		425FB9612405781E00C58F43 /* Jet2TravelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FB9602405781E00C58F43 /* Jet2TravelUITests.swift */; };
+		425FB97724057BE200C58F43 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FB97624057BE200C58F43 /* Network.swift */; };
 		E0CC83BFD8AAFE2974CE8BE5 /* libPods-Jet2Travel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D8245076C4E389444106F2 /* libPods-Jet2Travel.a */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		425FB95C2405781E00C58F43 /* Jet2TravelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Jet2TravelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		425FB9602405781E00C58F43 /* Jet2TravelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jet2TravelUITests.swift; sourceTree = "<group>"; };
 		425FB9622405781E00C58F43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		425FB97624057BE200C58F43 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		94D8245076C4E389444106F2 /* libPods-Jet2Travel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Jet2Travel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA08240EBB91085364DF4E02 /* Pods-Jet2Travel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jet2Travel.debug.xcconfig"; path = "Target Support Files/Pods-Jet2Travel/Pods-Jet2Travel.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				425FB93E2405781C00C58F43 /* AppDelegate.swift */,
+				425FB97524057BD800C58F43 /* Model */,
 				425FB9402405781C00C58F43 /* SceneDelegate.swift */,
 				425FB9422405781C00C58F43 /* ViewController.swift */,
 				425FB9442405781C00C58F43 /* Main.storyboard */,
@@ -135,6 +138,14 @@
 			path = Jet2TravelUITests;
 			sourceTree = "<group>";
 		};
+		425FB97524057BD800C58F43 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				425FB97624057BE200C58F43 /* Network.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		7C81B7C3CB46BCCB5DCDD874 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,7 +160,6 @@
 				DA08240EBB91085364DF4E02 /* Pods-Jet2Travel.debug.xcconfig */,
 				34A64790CA42D101CAE866B1 /* Pods-Jet2Travel.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -312,6 +322,7 @@
 			files = (
 				425FB9432405781C00C58F43 /* ViewController.swift in Sources */,
 				425FB93F2405781C00C58F43 /* AppDelegate.swift in Sources */,
+				425FB97724057BE200C58F43 /* Network.swift in Sources */,
 				425FB9412405781C00C58F43 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
