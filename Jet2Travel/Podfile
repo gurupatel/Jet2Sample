@@ -3,17 +3,13 @@
 
 target 'Jet2Travel' do
   # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
+  #use_frameworks!
 
-  # Pods for Jet2Travel
+  # Pods for Sample
+    pod 'Alamofire' #Updated on 24/02/2020 (v_4.9.1)
 
-  target 'Jet2TravelTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+    pod 'Alamofire-SwiftyJSON' #Updated on 24/02/2020 (v_3.0.0-v_4.0.0)
 
-  target 'Jet2TravelUITests' do
-    # Pods for testing
-  end
+    pod 'SDWebImage' #Updated on 24/02/2020 (v_5.2.5)
 
 end

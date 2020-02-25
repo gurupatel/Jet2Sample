@@ -1,0 +1,6 @@
+module Pods_Jet2Travel {
+  umbrella header "Pods-Jet2Travel-umbrella.h"
+
+  export *
+  module * { export * }
+}
