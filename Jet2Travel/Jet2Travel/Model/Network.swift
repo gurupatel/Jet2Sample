@@ -52,7 +52,7 @@ class Network {
         
     // MARK: - request Method
 
-    func request(_ strURL : String, method : String, params : [String : AnyObject]?, delegate: AnyObject?, callBackStr: String, success:@escaping (JSON) -> Void, failure:@escaping (Error) -> Void) {
+    func request(_ strURL : String, method : String, params : [String : AnyObject]?, delegate: AnyObject?, success:@escaping (JSON) -> Void, failure:@escaping (Error) -> Void) {
                 
         strApi = strURL
                 
