@@ -21,6 +21,7 @@
 		425FB983240583FD00C58F43 /* EmployeeDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FB982240583FD00C58F43 /* EmployeeDataCell.swift */; };
 		425FB9862405869600C58F43 /* EmployeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FB9852405869600C58F43 /* EmployeeViewController.swift */; };
 		425FB98A2405916400C58F43 /* CommonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FB9892405916400C58F43 /* CommonUI.swift */; };
+		425FB98C24059E3A00C58F43 /* EmployeeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FB98B24059E3A00C58F43 /* EmployeeParser.swift */; };
 		E0CC83BFD8AAFE2974CE8BE5 /* libPods-Jet2Travel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D8245076C4E389444106F2 /* libPods-Jet2Travel.a */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		425FB982240583FD00C58F43 /* EmployeeDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeDataCell.swift; sourceTree = "<group>"; };
 		425FB9852405869600C58F43 /* EmployeeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeViewController.swift; sourceTree = "<group>"; };
 		425FB9892405916400C58F43 /* CommonUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUI.swift; sourceTree = "<group>"; };
+		425FB98B24059E3A00C58F43 /* EmployeeParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeParser.swift; sourceTree = "<group>"; };
 		94D8245076C4E389444106F2 /* libPods-Jet2Travel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Jet2Travel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA08240EBB91085364DF4E02 /* Pods-Jet2Travel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jet2Travel.debug.xcconfig"; path = "Target Support Files/Pods-Jet2Travel/Pods-Jet2Travel.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,6 +158,7 @@
 				425FB97624057BE200C58F43 /* Network.swift */,
 				425FB97824057D8A00C58F43 /* EmployeeData.swift */,
 				425FB97A24057E8400C58F43 /* WebServices.swift */,
+				425FB98B24059E3A00C58F43 /* EmployeeParser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				425FB97924057D8A00C58F43 /* EmployeeData.swift in Sources */,
 				425FB97F240580BA00C58F43 /* Constants.swift in Sources */,
 				425FB97724057BE200C58F43 /* Network.swift in Sources */,
+				425FB98C24059E3A00C58F43 /* EmployeeParser.swift in Sources */,
 				425FB9862405869600C58F43 /* EmployeeViewController.swift in Sources */,
 				425FB9412405781C00C58F43 /* SceneDelegate.swift in Sources */,
 				425FB98A2405916400C58F43 /* CommonUI.swift in Sources */,

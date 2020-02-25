@@ -53,7 +53,7 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
             
             if (data != nil && (data?.count)! > 0) {
                 
-                employeeDataEntity = Constants.parseEmployeeData(dataArray: responseDict!["data"] as? Array)
+                employeeDataEntity = EmployeeParser.parseEmployeeData(dataArray: responseDict!["data"] as? Array)
 
                 self.tblListView.reloadData()
             }

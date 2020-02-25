@@ -14,32 +14,5 @@ struct Constants {
     //--------------- Server Request URL's ---------------
 
     static let getEmployeeDataAPI: String = "http://dummy.restapiexample.com/api/v1/employees"
-    
-    static func parseEmployeeData(dataArray : Array<Any>?) -> [EmployeeData] {
-
-        var arrEmployeeDataEntity: [EmployeeData] = []
-
-        if (dataArray != nil) {
-            
-            for i in 0..<dataArray!.count {
-
-                let employeeDataEntity = EmployeeData()
-                
-                if let employeeDataDict  = dataArray![i] as? NSDictionary
-                {
-                    employeeDataEntity.empName = (employeeDataDict["employee_name"] as? String ?? "")
-                    employeeDataEntity.empID = (employeeDataDict["id"] as? String ?? "")
-                    employeeDataEntity.empAge = (employeeDataDict["employee_age"] as? String ?? "")
-                    employeeDataEntity.empSalary = (employeeDataDict["employee_salary"] as? String ?? "")
-                    employeeDataEntity.empImg = (employeeDataDict["profile_image"] as? String ?? "")
-
-                    arrEmployeeDataEntity.append(employeeDataEntity)
-                }
-            }
-        }
-        
-        return arrEmployeeDataEntity
-        
-    }
 }
 
