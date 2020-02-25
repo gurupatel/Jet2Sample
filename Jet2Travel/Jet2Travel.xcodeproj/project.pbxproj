@@ -19,6 +19,7 @@
 		425FB97924057D8A00C58F43 /* EmployeeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FB97824057D8A00C58F43 /* EmployeeData.swift */; };
 		425FB97B24057E8400C58F43 /* WebServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FB97A24057E8400C58F43 /* WebServices.swift */; };
 		425FB97F240580BA00C58F43 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FB97E240580BA00C58F43 /* Constants.swift */; };
+		425FB983240583FD00C58F43 /* EmployeeDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FB982240583FD00C58F43 /* EmployeeDataCell.swift */; };
 		E0CC83BFD8AAFE2974CE8BE5 /* libPods-Jet2Travel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D8245076C4E389444106F2 /* libPods-Jet2Travel.a */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		425FB97824057D8A00C58F43 /* EmployeeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeData.swift; sourceTree = "<group>"; };
 		425FB97A24057E8400C58F43 /* WebServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServices.swift; sourceTree = "<group>"; };
 		425FB97E240580BA00C58F43 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		425FB982240583FD00C58F43 /* EmployeeDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeDataCell.swift; sourceTree = "<group>"; };
 		94D8245076C4E389444106F2 /* libPods-Jet2Travel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Jet2Travel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA08240EBB91085364DF4E02 /* Pods-Jet2Travel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jet2Travel.debug.xcconfig"; path = "Target Support Files/Pods-Jet2Travel/Pods-Jet2Travel.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,6 +118,7 @@
 			children = (
 				425FB93E2405781C00C58F43 /* AppDelegate.swift */,
 				425FB97E240580BA00C58F43 /* Constants.swift */,
+				425FB980240583CB00C58F43 /* View */,
 				425FB97524057BD800C58F43 /* Model */,
 				425FB9402405781C00C58F43 /* SceneDelegate.swift */,
 				425FB9422405781C00C58F43 /* ViewController.swift */,
@@ -153,6 +156,22 @@
 				425FB97A24057E8400C58F43 /* WebServices.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		425FB980240583CB00C58F43 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				425FB981240583E800C58F43 /* Cells */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		425FB981240583E800C58F43 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				425FB982240583FD00C58F43 /* EmployeeDataCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		7C81B7C3CB46BCCB5DCDD874 /* Frameworks */ = {
@@ -332,6 +351,7 @@
 				425FB9432405781C00C58F43 /* ViewController.swift in Sources */,
 				425FB93F2405781C00C58F43 /* AppDelegate.swift in Sources */,
 				425FB97B24057E8400C58F43 /* WebServices.swift in Sources */,
+				425FB983240583FD00C58F43 /* EmployeeDataCell.swift in Sources */,
 				425FB97924057D8A00C58F43 /* EmployeeData.swift in Sources */,
 				425FB97F240580BA00C58F43 /* Constants.swift in Sources */,
 				425FB97724057BE200C58F43 /* Network.swift in Sources */,
