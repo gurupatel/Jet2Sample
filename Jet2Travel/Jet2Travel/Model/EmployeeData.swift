@@ -17,6 +17,6 @@ class EmployeeData: NSObject {
     var empName: String? = nil
     var empSalary: String? = nil
     var empAge: String? = nil
-    var empImg: String? = nil
+    var empImgLink: String? = nil
     var empID: String? = nil
 }

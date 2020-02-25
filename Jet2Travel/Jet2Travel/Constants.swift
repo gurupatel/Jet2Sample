@@ -14,5 +14,7 @@ struct Constants {
     //--------------- Server Request URL's ---------------
 
     static let getEmployeeDataAPI: String = "http://dummy.restapiexample.com/api/v1/employees"
+    
+    static let employeePlaceHolder: String = "CSMaleOffline"
 }
 

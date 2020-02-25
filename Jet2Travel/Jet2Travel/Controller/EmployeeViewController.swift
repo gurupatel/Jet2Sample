@@ -92,6 +92,7 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "EmployeeDataCell", for: indexPath) as! EmployeeDataCell
 
         cell.selectionStyle = .default
+        cell.accessoryType = .disclosureIndicator
 
         if (employeeDataEntity != nil && employeeDataEntity!.count > 0)  {
             
@@ -99,6 +100,8 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
             
             cell.lblEmpName.text = "Name : " + empData.empName!
             cell.lblEmpAge.text = "Age : " + empData.empAge!
+            
+            cell.empImg!.sd_setImage(with: URL(string: empData.empImgLink!), placeholderImage: UIImage(named: Constants.employeePlaceHolder))
         }
         
         return cell

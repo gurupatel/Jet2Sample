@@ -28,7 +28,7 @@ class EmployeeParser: NSObject {
                     employeeDataEntity.empID = (employeeDataDict["id"] as? String ?? "")
                     employeeDataEntity.empAge = (employeeDataDict["employee_age"] as? String ?? "")
                     employeeDataEntity.empSalary = (employeeDataDict["employee_salary"] as? String ?? "")
-                    employeeDataEntity.empImg = (employeeDataDict["profile_image"] as? String ?? "")
+                    employeeDataEntity.empImgLink = (employeeDataDict["profile_image"] as? String ?? "")
 
                     arrEmployeeDataEntity.append(employeeDataEntity)
                 }
