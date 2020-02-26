@@ -79,10 +79,16 @@
                                     <string key="title">Sort By Name
 </string>
                                 </state>
+                                <connections>
+                                    <action selector="sortByNameBtnBackTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4ay-Ur-uzq"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3Q-7x-l7M">
                                 <rect key="frame" x="207" y="54" width="207" height="48"/>
                                 <state key="normal" title="Sort By Age"/>
+                                <connections>
+                                    <action selector="sortByAgeBtnBackTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="amd-FA-9jZ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

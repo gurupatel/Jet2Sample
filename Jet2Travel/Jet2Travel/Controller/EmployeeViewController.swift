@@ -14,7 +14,7 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
 
     @IBOutlet var tblListView: UITableView!
 
-    var employeeDataEntity : [EmployeeData]? = nil
+    var arrEmployeeDataEntity : [EmployeeData]? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +37,29 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
             //No internet connection
             
         }
+    }
+    
+    // MARK: - Button Action Method
+    
+    @IBAction func sortByNameBtnBackTapped(_ sender: Any?) {
+                
+        arrEmployeeDataEntity = arrEmployeeDataEntity!.sorted { ($0.empName!).localizedCaseInsensitiveCompare($1.empName!) == ComparisonResult.orderedAscending }
+
+        self.reLoadTableView()
+    }
+    
+    @IBAction func sortByAgeBtnBackTapped(_ sender: Any?) {
+
+        arrEmployeeDataEntity = arrEmployeeDataEntity!.sorted { ($0.empAge!).localizedCaseInsensitiveCompare($1.empAge!) == ComparisonResult.orderedAscending }
+
+        self.reLoadTableView()
+    }
+
+    // MARK: - reLoadTableView Method
+
+    func reLoadTableView() {
+        
+        self.tblListView.reloadData()
     }
     
     // MARK: - getEmployeeDataFromServer Method
@@ -62,9 +85,9 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
             
             if (data != nil && (data?.count)! > 0) {
                 
-                employeeDataEntity = EmployeeParser.parseEmployeeData(dataArray: responseDict!["data"] as? Array)
+                arrEmployeeDataEntity = EmployeeParser.parseEmployeeData(dataArray: responseDict!["data"] as? Array)
 
-                self.tblListView.reloadData()
+                self.reLoadTableView()
             }
         }
         else {
@@ -89,9 +112,9 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
         
         var value = 0
         
-        if (employeeDataEntity != nil && employeeDataEntity!.count > 0) {
+        if (arrEmployeeDataEntity != nil && arrEmployeeDataEntity!.count > 0) {
             
-            value = employeeDataEntity!.count
+            value = arrEmployeeDataEntity!.count
         }
         return value
     }
@@ -103,9 +126,9 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
         cell.selectionStyle = .default
         cell.accessoryType = .disclosureIndicator
 
-        if (employeeDataEntity != nil && employeeDataEntity!.count > 0)  {
+        if (arrEmployeeDataEntity != nil && arrEmployeeDataEntity!.count > 0)  {
             
-            let empData = employeeDataEntity![indexPath.row]
+            let empData = arrEmployeeDataEntity![indexPath.row]
             
             cell.lblEmpName.text = "Name : " + empData.empName!
             cell.lblEmpAge.text = "Age : " + empData.empAge!
@@ -120,11 +143,23 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if (employeeDataEntity != nil && employeeDataEntity!.count > 0) {
+        if (arrEmployeeDataEntity != nil && arrEmployeeDataEntity!.count > 0) {
             
         }
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+       
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            
+            if (arrEmployeeDataEntity != nil && arrEmployeeDataEntity!.count > 0) {
+            
+                arrEmployeeDataEntity?.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+            }
+        }
+    }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         let value = UITableView.automaticDimension
