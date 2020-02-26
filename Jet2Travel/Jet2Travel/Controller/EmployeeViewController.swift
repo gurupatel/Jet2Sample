@@ -28,14 +28,24 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
         //Check for internet connection
         if (Constants.isConnectedToInternet() == true) {
             
+            //Added loader till api respond
             self.addIndicator()
             
+            //Get employee data from server 
             self.getEmployeeDataFromServer()
         }
         else {
             
-            //No internet connection
-            
+            //No internet connection show old fetched data, if any.
+         
+            let employeeData = UserDefaults.standard.array(forKey: "EmployeeData")
+
+            if (employeeData != nil) {
+                
+                arrEmployeeDataEntity = EmployeeParser.parseEmployeeData(dataArray: employeeData)
+
+                self.reLoadTableView()
+            }
         }
     }
     
@@ -84,6 +94,8 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
             let data = responseDict!["data"] as? NSArray
             
             if (data != nil && (data?.count)! > 0) {
+                
+                UserDefaults.standard.set(responseDict!["data"] as? Array<Any>, forKey: "EmployeeData")
                 
                 arrEmployeeDataEntity = EmployeeParser.parseEmployeeData(dataArray: responseDict!["data"] as? Array)
 
