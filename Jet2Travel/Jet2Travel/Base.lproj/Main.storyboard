@@ -35,15 +35,12 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8t-hr-ry2">
                                                     <rect key="frame" x="75" y="15" width="324" height="20.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="20.5" id="Yj0-Ol-daL"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GTE-ic-fDx">
-                                                    <rect key="frame" x="75" y="41.5" width="324" height="23.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Age : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GTE-ic-fDx">
+                                                    <rect key="frame" x="75" y="40.5" width="324" height="24.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -54,7 +51,7 @@
                                                 <constraint firstItem="BYo-X0-CAT" firstAttribute="centerY" secondItem="ZcS-TE-PtG" secondAttribute="centerY" id="EIg-kM-cQs"/>
                                                 <constraint firstItem="Y8t-hr-ry2" firstAttribute="top" secondItem="ZcS-TE-PtG" secondAttribute="top" constant="15" id="Owv-5l-tgz"/>
                                                 <constraint firstAttribute="bottom" secondItem="GTE-ic-fDx" secondAttribute="bottom" constant="15" id="XI2-Xu-UTZ"/>
-                                                <constraint firstItem="GTE-ic-fDx" firstAttribute="top" secondItem="Y8t-hr-ry2" secondAttribute="bottom" constant="6" id="g1r-aq-D5M"/>
+                                                <constraint firstItem="GTE-ic-fDx" firstAttribute="top" secondItem="Y8t-hr-ry2" secondAttribute="bottom" constant="5" id="g1r-aq-D5M"/>
                                                 <constraint firstItem="BYo-X0-CAT" firstAttribute="leading" secondItem="ZcS-TE-PtG" secondAttribute="leading" constant="15" id="h9a-YX-UTs"/>
                                                 <constraint firstItem="GTE-ic-fDx" firstAttribute="trailing" secondItem="Y8t-hr-ry2" secondAttribute="trailing" id="qsC-8M-M2m"/>
                                                 <constraint firstItem="Y8t-hr-ry2" firstAttribute="leading" secondItem="BYo-X0-CAT" secondAttribute="trailing" constant="10" id="tVh-Fv-X2c"/>

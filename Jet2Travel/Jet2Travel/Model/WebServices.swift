@@ -32,7 +32,7 @@ class WebServices : NSObject {
 
             let serverResponseDict = jsonObject as NSDictionary?
 
-            print("getEmployeeData : ", serverResponseDict!)
+            //print("getEmployeeData : ", serverResponseDict!)
 
             if (serverResponseDict != nil) {
                 

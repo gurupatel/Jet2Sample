@@ -22,6 +22,8 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        self.tblListView.rowHeight = UITableView.automaticDimension
+        self.tblListView.estimatedRowHeight = 80; //Set this to any value that works for you.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -139,6 +141,8 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
 
         cell.selectionStyle = .default
         cell.accessoryType = .disclosureIndicator
+
+//        cell.contentView.translatesAutoresizingMaskIntoConstraints = false
 
         if (arrEmpDataEntity != nil && arrEmpDataEntity!.count > 0)  {
             
