@@ -25,9 +25,18 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
       
-        self.addIndicator()
-        
-        self.getEmployeeDataFromServer()
+        //Check for internet connection
+        if (Constants.isConnectedToInternet() == true) {
+            
+            self.addIndicator()
+            
+            self.getEmployeeDataFromServer()
+        }
+        else {
+            
+            //No internet connection
+            
+        }
     }
     
     // MARK: - getEmployeeDataFromServer Method

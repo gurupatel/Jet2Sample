@@ -165,30 +165,4 @@ class Network {
             print("The network connection was lost.")
         }
     }
-    
-    // MARK: - startNetworkReachabilityObserver Method
-
-    @objc func startNetworkReachabilityObserver() {
-
-        reachabilityManager?.listener = { status in
-            switch status {
-
-                case .notReachable:
-                    print("The network is not reachable")
-
-                case .unknown :
-                    print("It is unknown whether the network is reachable")
-
-                case .reachable(.ethernetOrWiFi):
-                    print("The network is reachable over the WiFi connection")
-
-                case .reachable(.wwan):
-                    print("The network is reachable over the WWAN connection")
-
-                }
-            }
-
-            // start listening
-            reachabilityManager?.startListening()
-       }
 }

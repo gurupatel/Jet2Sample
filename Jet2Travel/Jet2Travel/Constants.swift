@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Alamofire
 
 struct Constants {
     
@@ -16,5 +17,12 @@ struct Constants {
     static let getEmployeeDataAPI: String = "http://dummy.restapiexample.com/api/v1/employees"
     
     static let employeePlaceHolder: String = "CSMaleOffline"
+    
+    //MARK:- isConnectedToInternet Functions
+
+    static func isConnectedToInternet() -> Bool {
+        
+        return NetworkReachabilityManager()?.isReachable ?? false
+    }
 }
 

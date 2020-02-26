@@ -15,12 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="aGL-N0-Kbt">
-                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IMt-YO-84m">
-                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                                <rect key="frame" x="0.0" y="102" width="414" height="760"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EmployeeDataCell" rowHeight="80" id="Doe-px-HS3" customClass="EmployeeDataCell" customModule="Jet2Travel" customModuleProvider="target">
@@ -77,16 +73,32 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Ctu-o3-nS9"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GeM-Q8-n7r">
+                                <rect key="frame" x="0.0" y="54" width="207" height="48"/>
+                                <state key="normal">
+                                    <string key="title">Sort By Name
+</string>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3Q-7x-l7M">
+                                <rect key="frame" x="207" y="54" width="207" height="48"/>
+                                <state key="normal" title="Sort By Age"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="IMt-YO-84m" secondAttribute="bottom" id="3Ph-Tb-1f9"/>
-                            <constraint firstItem="aGL-N0-Kbt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="8vC-D3-Ckt"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aGL-N0-Kbt" secondAttribute="trailing" id="9v3-qM-a5G"/>
-                            <constraint firstItem="IMt-YO-84m" firstAttribute="top" secondItem="aGL-N0-Kbt" secondAttribute="bottom" id="A2l-hW-HTu"/>
+                            <constraint firstItem="G3Q-7x-l7M" firstAttribute="height" secondItem="GeM-Q8-n7r" secondAttribute="height" id="GWt-nY-jqe"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IMt-YO-84m" secondAttribute="trailing" id="J3c-n3-fQS"/>
+                            <constraint firstItem="G3Q-7x-l7M" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="Kp2-jM-84I"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="G3Q-7x-l7M" secondAttribute="trailing" id="TTq-A5-kBa"/>
+                            <constraint firstItem="G3Q-7x-l7M" firstAttribute="leading" secondItem="GeM-Q8-n7r" secondAttribute="trailing" id="Y4d-6r-OFB"/>
+                            <constraint firstItem="GeM-Q8-n7r" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="fDF-jL-pin"/>
+                            <constraint firstItem="IMt-YO-84m" firstAttribute="top" secondItem="GeM-Q8-n7r" secondAttribute="bottom" id="gBC-I5-yd2"/>
+                            <constraint firstItem="G3Q-7x-l7M" firstAttribute="width" secondItem="GeM-Q8-n7r" secondAttribute="width" id="i4Z-Tw-TvB"/>
                             <constraint firstItem="IMt-YO-84m" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="m6X-hW-iap"/>
-                            <constraint firstItem="aGL-N0-Kbt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="p28-Iw-jKP"/>
+                            <constraint firstItem="GeM-Q8-n7r" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="r4n-Z4-mfD"/>
+                            <constraint firstItem="IMt-YO-84m" firstAttribute="top" secondItem="G3Q-7x-l7M" secondAttribute="bottom" id="z04-8c-yQ1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -96,7 +108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="111.83035714285714"/>
+            <point key="canvasLocation" x="-562" y="99"/>
         </scene>
     </scenes>
 </document>
