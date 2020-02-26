@@ -10,11 +10,13 @@ import UIKit
 
 class EmployeeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, EmployeeDataModelClassDelegate {
 
+    var selectedRow = 0
+    
     var indicator: UIActivityIndicatorView!
 
     @IBOutlet var tblListView: UITableView!
 
-    var arrEmployeeDataEntity : [EmployeeData]? = nil
+    var arrEmpDataEntity : [EmployeeData]? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +33,7 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
             //Added loader till api respond
             self.addIndicator()
             
-            //Get employee data from server 
+            //Get employee data from server
             self.getEmployeeDataFromServer()
         }
         else {
@@ -42,7 +44,7 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
 
             if (employeeData != nil) {
                 
-                arrEmployeeDataEntity = EmployeeParser.parseEmployeeData(dataArray: employeeData)
+                arrEmpDataEntity = EmployeeParser.parseEmployeeData(dataArray: employeeData)
 
                 self.reLoadTableView()
             }
@@ -53,14 +55,14 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func sortByNameBtnBackTapped(_ sender: Any?) {
                 
-        arrEmployeeDataEntity = arrEmployeeDataEntity!.sorted { ($0.empName!).localizedCaseInsensitiveCompare($1.empName!) == ComparisonResult.orderedAscending }
+        arrEmpDataEntity = arrEmpDataEntity!.sorted { ($0.empName!).localizedCaseInsensitiveCompare($1.empName!) == ComparisonResult.orderedAscending }
 
         self.reLoadTableView()
     }
     
     @IBAction func sortByAgeBtnBackTapped(_ sender: Any?) {
 
-        arrEmployeeDataEntity = arrEmployeeDataEntity!.sorted { ($0.empAge!).localizedCaseInsensitiveCompare($1.empAge!) == ComparisonResult.orderedAscending }
+        arrEmpDataEntity = arrEmpDataEntity!.sorted { ($0.empAge!).localizedCaseInsensitiveCompare($1.empAge!) == ComparisonResult.orderedAscending }
 
         self.reLoadTableView()
     }
@@ -97,7 +99,7 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
                 
                 UserDefaults.standard.set(responseDict!["data"] as? Array<Any>, forKey: "EmployeeData")
                 
-                arrEmployeeDataEntity = EmployeeParser.parseEmployeeData(dataArray: responseDict!["data"] as? Array)
+                arrEmpDataEntity = EmployeeParser.parseEmployeeData(dataArray: responseDict!["data"] as? Array)
 
                 self.reLoadTableView()
             }
@@ -124,9 +126,9 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
         
         var value = 0
         
-        if (arrEmployeeDataEntity != nil && arrEmployeeDataEntity!.count > 0) {
+        if (arrEmpDataEntity != nil && arrEmpDataEntity!.count > 0) {
             
-            value = arrEmployeeDataEntity!.count
+            value = arrEmpDataEntity!.count
         }
         return value
     }
@@ -138,9 +140,9 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
         cell.selectionStyle = .default
         cell.accessoryType = .disclosureIndicator
 
-        if (arrEmployeeDataEntity != nil && arrEmployeeDataEntity!.count > 0)  {
+        if (arrEmpDataEntity != nil && arrEmpDataEntity!.count > 0)  {
             
-            let empData = arrEmployeeDataEntity![indexPath.row]
+            let empData = arrEmpDataEntity![indexPath.row]
             
             cell.lblEmpName.text = "Name : " + empData.empName!
             cell.lblEmpAge.text = "Age : " + empData.empAge!
@@ -155,8 +157,12 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if (arrEmployeeDataEntity != nil && arrEmployeeDataEntity!.count > 0) {
+        if (arrEmpDataEntity != nil && arrEmpDataEntity!.count > 0) {
             
+            //Storing selected index to pass data to detail screen
+            selectedRow = indexPath.row
+            
+            performSegue(withIdentifier: "ShowEmployeeDetails", sender: self)
         }
     }
     
@@ -164,9 +170,9 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
        
         if editingStyle == UITableViewCell.EditingStyle.delete {
             
-            if (arrEmployeeDataEntity != nil && arrEmployeeDataEntity!.count > 0) {
+            if (arrEmpDataEntity != nil && arrEmpDataEntity!.count > 0) {
             
-                arrEmployeeDataEntity?.remove(at: indexPath.row)
+                arrEmpDataEntity?.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
             }
         }
@@ -197,6 +203,12 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
         indicator.stopAnimating()
         
         indicator.removeFromSuperview()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+       let destVC : EmployeeDetailsController = segue.destination as! EmployeeDetailsController
+       destVC.empDataEntity = arrEmpDataEntity![selectedRow]
     }
 }
 
