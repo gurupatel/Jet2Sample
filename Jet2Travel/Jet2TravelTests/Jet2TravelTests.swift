@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Jet2Travel
+//@testable import Jet2Travel
 
 class Jet2TravelTests: XCTestCase {
 
@@ -31,4 +31,29 @@ class Jet2TravelTests: XCTestCase {
         }
     }
 
+//    func testGetMoviesWithExpectedURLHostAndPath() {
+//        let webServices = WebServices()
+//        let mockURLSession  = MockURLSession()
+//        webServices.session = mockURLSession
+//        webServices.getEmployeeData() { employeeData, error in }
+//
+//        XCTAssertEqual(mockURLSession.cachedUrl?.path, "http://dummy.restapiexample.com/api/v1/employees")
+//    }
+//
+//    func testGetEmployeesSuccessReturnsEmployees() {
+//        let webServices = WebServices()
+//        let mockURLSession  = MockURLSession()
+//        webServices.session = mockURLSession
+//
+//        let empExpectation = expectation(description: "employees")
+//        var empResponse: [EmployeeData]?
+//
+//        webServices.getEmployeeData { (employeeData, error) in
+//
+//            empExpectation.fulfill()
+//        }
+//        waitForExpectations(timeout: 5) { (error) in
+//            XCTAssertNotNil(empResponse)
+//        }
+//    }
 }

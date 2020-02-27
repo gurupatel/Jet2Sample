@@ -52,117 +52,27 @@ class Network {
         
     // MARK: - request Method
 
-    func request(_ strURL : String, method : String, params : [String : AnyObject]?, delegate: AnyObject?, success:@escaping (JSON) -> Void, failure:@escaping (Error) -> Void) {
+    func request(_ strURL : String, method : String, params : [String : AnyObject]?, onCompletion:@escaping ((_ response: JSON) -> Void)) {
                 
         strApi = strURL
                 
         let sessionManager = self.initSessionManager()
 
-        var delegate = delegate
-
-        if (delegate == nil) {
-            
-            delegate = "" as AnyObject
-        }
-
         sessionManager!.request(strURL, method: HTTPMethod(rawValue: method)!, parameters: params, encoding: JSONEncoding.default)
             .responseSwiftyJSON(completionHandler: { dataResponse in
                 
-                if (dataResponse.result.value != nil) {
+                var contentJSON = JSON()
 
-                    //(dataResponse.request?.url)!
-                                        
-                    let resJson = JSON(dataResponse.result.value!)
-                    success(resJson)
+                    if dataResponse.result.isSuccess {
                     
-                    if let status = dataResponse.response?.statusCode {
-                        
-                        let jsonObject = try? (JSONSerialization.jsonObject(with: resJson.rawData(), options: []) as! NSDictionary)
-
-                        let serverResponseDict = jsonObject as NSDictionary?
-
-                        switch(status) {
-                        
-                        case 200...204:
-                            //Success
-                            
-                            break
-                        case 500...504:
-                            //Fail
-
-                            if dataResponse.result.isFailure {
-                                
-                                let error : Error = dataResponse.result.error!
-
-                                if (error._code != NSURLErrorTimedOut && error._code != NSURLErrorNotConnectedToInternet && error._code != NSURLErrorNetworkConnectionLost && error._code != -999) {
-                                    
-                                    failure(error)
-                                }
-                                else {
-                                    
-                                    self.checkErrorStateAndPerformAction(error: error)
-                                }
-                            }
-                            
-                        default:
-                            
-                            print("error with response status: \(status)")
-                        }
-                    }
+                        contentJSON = JSON(dataResponse.result.value!)
+                
+                    } else {
                     
-                    if dataResponse.result.isFailure {
-                        
-                        let error : Error = dataResponse.result.error!
-
-                        if (error._code != NSURLErrorTimedOut && error._code != NSURLErrorNotConnectedToInternet && error._code != NSURLErrorNetworkConnectionLost && error._code != -999) {
-                            
-                            failure(error)
-                        }
-                        else {
-                            
-                            self.checkErrorStateAndPerformAction(error: error)
-                        }
+                        contentJSON = JSON(dataResponse.result.error!)
                     }
-                }
-                else {
-                    
-                    let error : Error = dataResponse.result.error!
-
-                    if (error._code != NSURLErrorTimedOut && error._code != NSURLErrorNotConnectedToInternet && error._code != NSURLErrorNetworkConnectionLost && error._code != -999) {
-                        
-                        failure(error)
-                    }
-                    else {
-                        
-                        self.checkErrorStateAndPerformAction(error: error)
-                    }
-
-                    print("**** NO RESPONSE FROM SERVER ****")
-                }
+                
+                    onCompletion(contentJSON)
             })
-    }
-    
-    // MARK: - checkErrorStateAndPerformAction Method
-
-    func checkErrorStateAndPerformAction(error: Error)
-    {
-        if (error._code == NSURLErrorTimedOut) {
-            print("Request timeout!")
-            
-        }
-        else if (error._code == NSURLErrorNotConnectedToInternet || error._code == -1009 || error.localizedDescription == "The Internet connection appears to be offline.") {
-
-            print("NO Internet Connection!")
-            
-        }
-        else if (error._code == NSURLErrorBadServerResponse || error._code == 500) {
-
-            print("Server Error!")
-            
-        }
-        else if error._code == NSURLErrorNetworkConnectionLost {
-
-            print("The network connection was lost.")
-        }
     }
 }

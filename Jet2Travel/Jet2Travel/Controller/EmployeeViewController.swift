@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EmployeeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, EmployeeDataModelClassDelegate {
+class EmployeeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var selectedRow = 0
     
@@ -81,42 +81,45 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
     func getEmployeeDataFromServer() {
         
         let webServices = WebServices()
-        webServices.delegate = self
-        webServices.getEmployeeData()
-    }
-    
-    // MARK: - EmployeeData Delegates Methods
-
-    func didGetEmployeeDataSuccessfully(_ responseDict: NSDictionary?) {
         
-        self.removeIndicator()
+        webServices.getEmployeeData(completion: { (reponse, error) in
         
-        if (responseDict!["status"] as? String ?? "" == "success") {
-            
-            //Success
-            
-            let data = responseDict!["data"] as? NSArray
-            
-            if (data != nil && (data?.count)! > 0) {
-                
-                UserDefaults.standard.set(responseDict!["data"] as? Array<Any>, forKey: "EmployeeData")
-                
-                arrEmpDataEntity = EmployeeParser.parseEmployeeData(dataArray: responseDict!["data"] as? Array)
+            self.removeIndicator()
 
-                self.reLoadTableView()
+            if (error != nil) {
+                
+                //API throws error
             }
-        }
-        else {
-            
-            //Error
-        }
+            else {
+                
+                //Success
+                
+                if (reponse != nil) {
+                  
+                    if (reponse!["status"] as? String ?? "" == "success") {
+                        
+                        //Success
+                        
+                        let data = reponse!["data"] as? NSArray
+                        
+                        if (data != nil && (data?.count)! > 0) {
+                            
+                            UserDefaults.standard.set(reponse!["data"] as? Array<Any>, forKey: "EmployeeData")
+                            
+                            self.arrEmpDataEntity = EmployeeParser.parseEmployeeData(dataArray: reponse!["data"] as? Array)
+
+                            self.reLoadTableView()
+                        }
+                    }
+                    else {
+                        
+                        //Error
+                    }
+                }
+            }
+        })
     }
     
-    func didGetEmployeeDataFailed(_ error: Error?) {
-        
-        self.removeIndicator()
-    }
-
     // MARK: - tableCategory Delegates and Datasources
     
     func numberOfSections(in tableView: UITableView) -> Int {

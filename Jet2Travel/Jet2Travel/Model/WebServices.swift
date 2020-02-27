@@ -7,44 +7,31 @@
 //
 
 import Foundation
-
-@objc protocol EmployeeDataModelClassDelegate {
-    
-    func didGetEmployeeDataSuccessfully(_ responseDict: NSDictionary?)
-    func didGetEmployeeDataFailed(_ error: Error?)
-}
+import Alamofire
+import SwiftyJSON
+import Alamofire_SwiftyJSON
 
 class WebServices : NSObject {
 
-    @IBOutlet var delegate : EmployeeDataModelClassDelegate?
+    var session: URLSession!
 
     public override init(){}
 
     // MARK: - getEmployeeData Method
 
-    func getEmployeeData() {
+    func getEmployeeData(completion: @escaping (_ response: NSDictionary?, _ error: Error?) -> Void) {
         
         let URL: String = Constants.getEmployeeDataAPI
                 
-        Network.sharedInstance.request(URL, method: "GET", params: nil, delegate: self.delegate, success: { (json) in
-            
-            let jsonObject = try? (JSONSerialization.jsonObject(with: json.rawData(), options: []) as! NSDictionary)
-
-            let serverResponseDict = jsonObject as NSDictionary?
-
-            //print("getEmployeeData : ", serverResponseDict!)
-
-            if (serverResponseDict != nil) {
-                
-                self.delegate!.didGetEmployeeDataSuccessfully(serverResponseDict)
-            }
-
-        }, failure: { (error) in
-                print(error)
-
-            self.delegate!.didGetEmployeeDataFailed(error)
+        Network.sharedInstance.request(URL, method: "GET", params: nil, onCompletion: { (reponse) in
         
+                let jsonObject = try? (JSONSerialization.jsonObject(with: reponse.rawData(), options: []) as! NSDictionary)
+
+                let serverResponseDict = jsonObject as NSDictionary?
+
+                //print("getEmployeeData : ", serverResponseDict!)
+
+                completion(serverResponseDict, reponse.error)
         })
     }
-
 }
