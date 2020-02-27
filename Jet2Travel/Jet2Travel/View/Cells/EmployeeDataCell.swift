@@ -18,9 +18,4 @@ class EmployeeDataCell: UITableViewCell {
     @IBOutlet weak var lblEmpName: UILabel!
     @IBOutlet weak var lblEmpSalary: UILabel!
     @IBOutlet weak var empImg: UIImageView!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 }

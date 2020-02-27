@@ -7,7 +7,7 @@
 //
 
 import XCTest
-//@testable import Jet2Travel
+@testable import Jet2Travel
 
 class Jet2TravelTests: XCTestCase {
 
@@ -31,21 +31,32 @@ class Jet2TravelTests: XCTestCase {
         }
     }
 
-//
-//    func testGetEmployeesSuccessReturnsEmployees() {
-//        let webServices = WebServices()
-//        let mockURLSession  = MockURLSession()
-//        webServices.session = mockURLSession
-//
-//        let empExpectation = expectation(description: "employees")
-//        var empResponse: [EmployeeData]?
-//
-//        webServices.getEmployeeData { (employeeData, error) in
-//
-//            empExpectation.fulfill()
-//        }
-//        waitForExpectations(timeout: 5) { (error) in
-//            XCTAssertNotNil(empResponse)
-//        }
-//    }
+    func test_API_IsCorrect() {
+
+        let URL: String = Constants.getEmployeeDataAPI
+
+        let expectedBaseURLString = URL
+                       
+        Network.sharedInstance.request(URL, method: Constants.getMethode, params: nil, onCompletion: { (reponse) in
+        
+            XCTAssertEqual(try! String(contentsOf: reponse.url!), expectedBaseURLString, "Base URL does not match expected base URL. Expected base URLs to match.")
+        })
+    }
+
+    func testGetEmployeesDetailsSuccess() {
+        let webServices = WebServices()
+
+        let empExpectation = expectation(description: "employees")
+        var empResponse: NSDictionary?
+
+        webServices.getEmployeeData { (reponse, error) in
+
+            empResponse = reponse
+            empExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 5) { (error) in
+            
+            XCTAssertNil(error, "\(String(describing: empResponse))")
+        }
+    }
 }

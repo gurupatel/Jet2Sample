@@ -88,11 +88,11 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
 
             if (error != nil) {
                 
-                //API throws error
+                //Error
             }
             else {
                 
-                //Success
+                //API Success
                 
                 if (reponse != nil) {
                   
@@ -145,15 +145,13 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
         cell.selectionStyle = .default
         cell.accessoryType = .disclosureIndicator
 
-//        cell.contentView.translatesAutoresizingMaskIntoConstraints = false
-
         if (arrEmpDataEntity != nil && arrEmpDataEntity!.count > 0)  {
             
             let empData = arrEmpDataEntity![indexPath.row]
             
+            //Shwoing data in cells
             cell.lblEmpName.text = "Name : " + empData.empName!
             cell.lblEmpAge.text = "Age : " + empData.empAge!
-            
             cell.empImg!.sd_setImage(with: URL(string: empData.empImgLink!), placeholderImage: UIImage(named: Constants.employeePlaceHolder))
         }
         
@@ -169,12 +167,14 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
             //Storing selected index to pass data to detail screen
             selectedRow = indexPath.row
             
+            //Adding EmployeeDetails controller
             performSegue(withIdentifier: "ShowEmployeeDetails", sender: self)
         }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
        
+        //For right swipe to delete user data
         if editingStyle == UITableViewCell.EditingStyle.delete {
             
             if (arrEmpDataEntity != nil && arrEmpDataEntity!.count > 0) {
@@ -214,6 +214,7 @@ class EmployeeViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        //Passing selected employee data to another screen
        let destVC : EmployeeDetailsController = segue.destination as! EmployeeDetailsController
        destVC.empDataEntity = arrEmpDataEntity![selectedRow]
     }

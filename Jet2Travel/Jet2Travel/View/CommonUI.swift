@@ -12,6 +12,7 @@ import UIKit
 class CommonUI: NSObject {
 
     // MARK: - createUIActivityIndicatorView Method
+    
     @objc static func createUIActivityIndicatorView() -> UIActivityIndicatorView {
         
         let indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)

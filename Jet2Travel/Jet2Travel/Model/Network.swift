@@ -31,6 +31,8 @@ class Network {
     func initSessionManager() -> SessionManager? {
 
         let sessionManager = Alamofire.SessionManager.default
+        
+        //We can change time out interval from here
         sessionManager.session.configuration.timeoutIntervalForRequest = 300
         sessionManager.session.configuration.timeoutIntervalForResource = 300
 

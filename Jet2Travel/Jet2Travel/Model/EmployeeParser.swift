@@ -12,6 +12,8 @@ import Foundation
 
 class EmployeeParser: NSObject {
 
+    // MARK: - parseEmployeeData
+
     static func parseEmployeeData(dataArray : Array<Any>?) -> [EmployeeData] {
 
         var arrEmployeeDataEntity: [EmployeeData] = []

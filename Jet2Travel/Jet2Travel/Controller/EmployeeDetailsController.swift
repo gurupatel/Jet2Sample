@@ -25,6 +25,7 @@ class EmployeeDetailsController: UIViewController {
         
         if (empDataEntity != nil) {
             
+            //Showing data
             lblEmpAge.text = "Age : " + empDataEntity!.empAge!
             lblEmpName.text = "Name : " + empDataEntity!.empName!
             lblEmpSalary.text = "Salary : " + empDataEntity!.empSalary!

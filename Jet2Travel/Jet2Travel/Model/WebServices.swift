@@ -23,7 +23,7 @@ class WebServices : NSObject {
         
         let URL: String = Constants.getEmployeeDataAPI
                 
-        Network.sharedInstance.request(URL, method: "GET", params: nil, onCompletion: { (reponse) in
+        Network.sharedInstance.request(URL, method: Constants.getMethode, params: nil, onCompletion: { (reponse) in
         
                 let jsonObject = try? (JSONSerialization.jsonObject(with: reponse.rawData(), options: []) as! NSDictionary)
 
