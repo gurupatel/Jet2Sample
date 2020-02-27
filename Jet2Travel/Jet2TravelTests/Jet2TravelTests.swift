@@ -31,14 +31,6 @@ class Jet2TravelTests: XCTestCase {
         }
     }
 
-//    func testGetMoviesWithExpectedURLHostAndPath() {
-//        let webServices = WebServices()
-//        let mockURLSession  = MockURLSession()
-//        webServices.session = mockURLSession
-//        webServices.getEmployeeData() { employeeData, error in }
-//
-//        XCTAssertEqual(mockURLSession.cachedUrl?.path, "http://dummy.restapiexample.com/api/v1/employees")
-//    }
 //
 //    func testGetEmployeesSuccessReturnsEmployees() {
 //        let webServices = WebServices()

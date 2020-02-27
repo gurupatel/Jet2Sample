@@ -3,17 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		4250212024061FA100C506B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250211F24061FA100C506B7 /* SceneDelegate.swift */; };
 		4250212224061FEE00C506B7 /* EmployeeDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250212124061FEE00C506B7 /* EmployeeDetailsController.swift */; };
+		4251812A2407B2C500AA4C1C /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425181292407B2C500AA4C1C /* MockURLSession.swift */; };
 		425FB93F2405781C00C58F43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FB93E2405781C00C58F43 /* AppDelegate.swift */; };
 		425FB9462405781C00C58F43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425FB9442405781C00C58F43 /* Main.storyboard */; };
 		425FB9482405781D00C58F43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 425FB9472405781D00C58F43 /* Assets.xcassets */; };
 		425FB94B2405781D00C58F43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425FB9492405781D00C58F43 /* LaunchScreen.storyboard */; };
-		425FB9562405781D00C58F43 /* Jet2TravelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FB9552405781D00C58F43 /* Jet2TravelTests.swift */; };
+		425FB9562405781D00C58F43 /* Jet2TravelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FB9552405781D00C58F43 /* Jet2TravelTests.swift */; platformFilter = ios; };
 		425FB9612405781E00C58F43 /* Jet2TravelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FB9602405781E00C58F43 /* Jet2TravelUITests.swift */; };
 		425FB97724057BE200C58F43 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FB97624057BE200C58F43 /* Network.swift */; };
 		425FB97924057D8A00C58F43 /* EmployeeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FB97824057D8A00C58F43 /* EmployeeData.swift */; };
@@ -47,6 +48,7 @@
 		34A64790CA42D101CAE866B1 /* Pods-Jet2Travel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jet2Travel.release.xcconfig"; path = "Target Support Files/Pods-Jet2Travel/Pods-Jet2Travel.release.xcconfig"; sourceTree = "<group>"; };
 		4250211F24061FA100C506B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4250212124061FEE00C506B7 /* EmployeeDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeDetailsController.swift; sourceTree = "<group>"; };
+		425181292407B2C500AA4C1C /* MockURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		425FB93B2405781C00C58F43 /* Jet2Travel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jet2Travel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		425FB93E2405781C00C58F43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		425FB9452405781C00C58F43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 		425FB97524057BD800C58F43 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				425181292407B2C500AA4C1C /* MockURLSession.swift */,
 				425FB97624057BE200C58F43 /* Network.swift */,
 				425FB97824057D8A00C58F43 /* EmployeeData.swift */,
 				425FB97A24057E8400C58F43 /* WebServices.swift */,
@@ -367,6 +370,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4251812A2407B2C500AA4C1C /* MockURLSession.swift in Sources */,
 				425FB93F2405781C00C58F43 /* AppDelegate.swift in Sources */,
 				425FB97B24057E8400C58F43 /* WebServices.swift in Sources */,
 				425FB983240583FD00C58F43 /* EmployeeDataCell.swift in Sources */,
@@ -590,6 +594,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = Jet2TravelTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -611,6 +616,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = Jet2TravelTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
